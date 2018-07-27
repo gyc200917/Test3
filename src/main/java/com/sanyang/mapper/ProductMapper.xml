@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanyang.mapper.ProductMapper">
+
+<select id="getAllPro" resultType="product">
+select * from product,productType where product.typeId = productType.tid
+</select>
+
+<select id="getPro" resultType="product" parameterType="int">
+select * from product,productType where product.typeId = productType.tid and pid = #{pid}
+</select>
+
+<select id="getAllType" resultType="producttype">
+select * from productType
+</select>
+
+<insert id="addPro" parameterType="product">
+insert into product values(null,#{proName},#{price},#{descri},#{typeId})
+</insert>
+
+
+</mapper>
